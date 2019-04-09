@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/upload', function () {
+    return view('upload');
+});
+Route::post('/upload', 'ArquivoController@gravaArquivo');
+
+Route::get('/get', 'ArquivoController@recuperaArquivo');
+
+Route::get('/download', 'ArquivoController@baixaArquivo');
+
+Route::get('/url', 'ArquivoController@urlArquivo');
