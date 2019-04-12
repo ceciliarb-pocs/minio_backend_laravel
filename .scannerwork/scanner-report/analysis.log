@@ -1,0 +1,212 @@
+Environment variables:
+  - =::=::\
+  - =C:=C:\Users\pb002781
+  - =D:=D:\projetos\php\_testes\minio
+  - =ExitCode=00000000
+  - ALLUSERSPROFILE=C:\ProgramData
+  - ANSICON=238x1000 (238x61)
+  - ANSICON_DEF=7
+  - APPDATA=C:\Users\pb002781\AppData\Roaming
+  - CMDER_ALIASES=1
+  - CMDER_CLINK=1
+  - CMDER_CONFIGURED=1
+  - CMDER_INIT_END=10:07:49,94
+  - CMDER_INIT_START=10:07:48,27
+  - CMDER_ROOT=C:\cmder
+  - CMDER_SHELL=cmd
+  - CMDER_USER_FLAGS= 
+  - COMPUTERNAME=PC991011247500
+  - ComSpec=C:\Windows\system32\cmd.exe
+  - CommonProgramFiles=C:\Program Files\Common Files
+  - CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+  - CommonProgramW6432=C:\Program Files\Common Files
+  - ConEmuANSI=ON
+  - ConEmuAnsiLog=
+  - ConEmuArgs=
+  - ConEmuArgs2=
+  - ConEmuBackHWND=0x005309A6
+  - ConEmuBaseDir=C:\cmder\vendor\conemu-maximus5\ConEmu
+  - ConEmuBaseDirShort=C:\cmder\vendor\conemu-maximus5\ConEmu
+  - ConEmuBuild=180626
+  - ConEmuCfgDir=C:\cmder\vendor\conemu-maximus5
+  - ConEmuConfig=
+  - ConEmuDir=C:\cmder\vendor\conemu-maximus5
+  - ConEmuDrawHWND=0x00330BAC
+  - ConEmuDrive=C:
+  - ConEmuHWND=0x00420776
+  - ConEmuHooks=Enabled
+  - ConEmuPID=25420
+  - ConEmuPalette=Monokai
+  - ConEmuServerPID=7704
+  - ConEmuTask={cmd::Cmder}
+  - ConEmuWorkDir=C:\Users\pb002781
+  - ConEmuWorkDrive=C:
+  - DOCKER_TOOLBOX_INSTALL_PATH=C:\Program Files\Docker Toolbox
+  - DriverData=C:\Windows\System32\Drivers\DriverData
+  - ERROR_CODE=0
+  - GIT_INSTALL_ROOT=C:\cmder\vendor\git-for-windows
+  - HOME=C:\Users\pb002781
+  - HOMEDRIVE=C:
+  - HOMEPATH=\Users\pb002781
+  - JAVA_EXEC="D:\sonar-scanner-3.3.0.1492-windows\bin\..\jre\bin\java.exe"
+  - JAVA_HOME=D:\sonar-scanner-3.3.0.1492-windows\bin\..\jre
+  - LANG=pt_BR.UTF-8
+  - LOCALAPPDATA=C:\Users\pb002781\AppData\Local
+  - LOGONSERVER=\\S387-PRODABEL
+  - NUMBER_OF_PROCESSORS=4
+  - OS=Windows_NT
+  - OneDrive=C:\Users\pb002781\OneDrive
+  - OneDriveConsumer=C:\Users\pb002781\OneDrive
+  - PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+  - PLINK_PROTOCOL=ssh
+  - PROCESSOR_ARCHITECTURE=AMD64
+  - PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 158 Stepping 11, GenuineIntel
+  - PROCESSOR_LEVEL=6
+  - PROCESSOR_REVISION=9e0b
+  - PROJECT_HOME=D:\projetos\php\_testes\minio
+  - PROMPT=CLINK $P$G
+  - PSModulePath=C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+  - PUBLIC=C:\Users\Public
+  - Path=C:\cmder\bin;C:\cmder\vendor\bin;C:\cmder\vendor\conemu-maximus5\ConEmu\Scripts;C:\cmder\vendor\conemu-maximus5;C:\cmder\vendor\conemu-maximus5\ConEmu;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;D:\HashiCorp\Vagrant\bin;C:\Users\pb002781\AppData\Local\Microsoft\WindowsApps;C:\Users\pb002781\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Java\jdk-11.0.2\bin;C:\Users\pb002781\AppData\Local\ComposerSetup\bin;C:\Users\pb002781\AppData\Roaming\Composer\vendor\bin;C:\cmder;C:\Users\pb002781\AppData\Roaming\Composer\vendor;C:\Program Files\Docker Toolbox;C:\cmder\vendor\git-for-windows\bin;C:\xampp\php\;C:\instantclient_12_2;C:\Windows\SysWOW64\instantclient_12_2;C:\Users\pb002781\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;D:\sonar-scanner-3.3.0.1492-windows\bin;C:\cmder\vendor\git-for-windows\cmd;C:\cmder\vendor\git-for-windows\mingw64\bin;C:\cmder\vendor\git-for-windows\usr\bin;C:\cmder
+  - ProgramData=C:\ProgramData
+  - ProgramFiles=C:\Program Files
+  - ProgramFiles(x86)=C:\Program Files (x86)
+  - ProgramW6432=C:\Program Files
+  - SESSIONNAME=Console
+  - SONAR_SCANNER_HOME=D:\sonar-scanner-3.3.0.1492-windows\bin\..
+  - SVN_SSH=C:\\cmder\\vendor\\git-for-windows\\bin\\ssh.exe
+  - SystemDrive=C:
+  - SystemRoot=C:\Windows
+  - TEMP=C:\Users\pb002781\AppData\Local\Temp
+  - TERM=cygwin
+  - TMP=C:\Users\pb002781\AppData\Local\Temp
+  - TNS_ADMIN=C:\instantclient_12_2
+  - USERDNSDOMAIN=PBH.RMI
+  - USERDOMAIN=PBH
+  - USERDOMAIN_ROAMINGPROFILE=PBH
+  - USERNAME=pb002781
+  - USERPROFILE=C:\Users\pb002781
+  - VBOX_MSI_INSTALL_PATH=C:\Program Files\Oracle\VirtualBox\
+  - aliases=C:\cmder\config\user_aliases.cmd
+  - architecture=64
+  - architecture_bits=64
+  - ccall=call C:\cmder\vendor\bin\cexec.cmd
+  - cexec=C:\cmder\vendor\bin\cexec.cmd
+  - debug_output=0
+  - fast_init=0
+  - feFlagName= 
+  - http_proxy=http://mbarbosa:yobuYI40@cache01.pbh:3128
+  - lib_base=call "C:\cmder\vendor\lib\lib_base.cmd"
+  - lib_console=call "C:\cmder\vendor\lib\lib_console.cmd"
+  - lib_git=call "C:\cmder\vendor\lib\lib_git.cmd"
+  - lib_path=call "C:\cmder\vendor\lib\lib_path.cmd"
+  - lib_profile=call "C:\cmder\vendor\lib\lib_profile.cmd"
+  - max_depth=1
+  - nix_tools=1
+  - scriptdir=D:\sonar-scanner-3.3.0.1492-windows\bin
+  - time_init=0
+  - use_embedded_jre=true
+  - user_aliases=C:\cmder\config\user_aliases.cmd
+  - verbose_output=0
+  - windir=C:\Windows
+System properties:
+  - awt.toolkit=sun.awt.windows.WToolkit
+  - file.encoding=Cp1252
+  - file.encoding.pkg=sun.io
+  - file.separator=\
+  - java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment
+  - java.awt.headless=true
+  - java.awt.printerjob=sun.awt.windows.WPrinterJob
+  - java.class.path=D:\sonar-scanner-3.3.0.1492-windows\bin\..\lib\sonar-scanner-cli-3.3.0.1492.jar
+  - java.class.version=52.0
+  - java.endorsed.dirs=D:\sonar-scanner-3.3.0.1492-windows\jre\lib\endorsed
+  - java.ext.dirs=D:\sonar-scanner-3.3.0.1492-windows\jre\lib\ext;C:\Windows\Sun\Java\lib\ext
+  - java.home=D:\sonar-scanner-3.3.0.1492-windows\jre
+  - java.io.tmpdir=C:\Users\pb002781\AppData\Local\Temp\
+  - java.library.path=D:\sonar-scanner-3.3.0.1492-windows\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\cmder\bin;C:\cmder\vendor\bin;C:\cmder\vendor\conemu-maximus5\ConEmu\Scripts;C:\cmder\vendor\conemu-maximus5;C:\cmder\vendor\conemu-maximus5\ConEmu;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;D:\HashiCorp\Vagrant\bin;C:\Users\pb002781\AppData\Local\Microsoft\WindowsApps;C:\Users\pb002781\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Java\jdk-11.0.2\bin;C:\Users\pb002781\AppData\Local\ComposerSetup\bin;C:\Users\pb002781\AppData\Roaming\Composer\vendor\bin;C:\cmder;C:\Users\pb002781\AppData\Roaming\Composer\vendor;C:\Program Files\Docker Toolbox;C:\cmder\vendor\git-for-windows\bin;C:\xampp\php\;C:\instantclient_12_2;C:\Windows\SysWOW64\instantclient_12_2;C:\Users\pb002781\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;D:\sonar-scanner-3.3.0.1492-windows\bin;C:\cmder\vendor\git-for-windows\cmd;C:\cmder\vendor\git-for-windows\mingw64\bin;C:\cmder\vendor\git-for-windows\usr\bin;C:\cmder;.
+  - java.runtime.name=Java(TM) SE Runtime Environment
+  - java.runtime.version=1.8.0_121-b13
+  - java.specification.name=Java Platform API Specification
+  - java.specification.vendor=Oracle Corporation
+  - java.specification.version=1.8
+  - java.vendor=Oracle Corporation
+  - java.vendor.url=http://java.oracle.com/
+  - java.vendor.url.bug=http://bugreport.sun.com/bugreport/
+  - java.version=1.8.0_121
+  - java.vm.info=mixed mode
+  - java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+  - java.vm.specification.name=Java Virtual Machine Specification
+  - java.vm.specification.vendor=Oracle Corporation
+  - java.vm.specification.version=1.8
+  - java.vm.vendor=Oracle Corporation
+  - java.vm.version=25.121-b13
+  - line.separator=
+
+  - os.arch=amd64
+  - os.name=Windows 10
+  - os.version=10.0
+  - path.separator=;
+  - project.home=D:\projetos\php\_testes\minio
+  - scanner.home=D:\sonar-scanner-3.3.0.1492-windows\bin\..
+  - sun.arch.data.model=64
+  - sun.boot.class.path=D:\sonar-scanner-3.3.0.1492-windows\jre\lib\resources.jar;D:\sonar-scanner-3.3.0.1492-windows\jre\lib\rt.jar;D:\sonar-scanner-3.3.0.1492-windows\jre\lib\sunrsasign.jar;D:\sonar-scanner-3.3.0.1492-windows\jre\lib\jsse.jar;D:\sonar-scanner-3.3.0.1492-windows\jre\lib\jce.jar;D:\sonar-scanner-3.3.0.1492-windows\jre\lib\charsets.jar;D:\sonar-scanner-3.3.0.1492-windows\jre\lib\jfr.jar;D:\sonar-scanner-3.3.0.1492-windows\jre\classes
+  - sun.boot.library.path=D:\sonar-scanner-3.3.0.1492-windows\jre\bin
+  - sun.cpu.endian=little
+  - sun.cpu.isalist=amd64
+  - sun.desktop=windows
+  - sun.io.unicode.encoding=UnicodeLittle
+  - sun.java.command=org.sonarsource.scanner.cli.Main -X
+  - sun.java.launcher=SUN_STANDARD
+  - sun.jnu.encoding=Cp1252
+  - sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+  - sun.os.patch.level=
+  - sun.stderr.encoding=cp850
+  - sun.stdout.encoding=cp850
+  - user.country=BR
+  - user.dir=D:\projetos\php\_testes\minio
+  - user.home=C:\Users\pb002781
+  - user.language=pt
+  - user.name=pb002781
+  - user.script=
+  - user.timezone=America/Sao_Paulo
+  - user.variant=
+SonarQube plugins:
+  - SonarPython 1.10.0.2131 (python)
+  - PMD 3.1.3 (pmd)
+  - Svn 1.8.0.1168 (scmsvn)
+  - SonarJS 5.0.0.6962 (javascript)
+  - SonarC# 7.9.1.7622 (csharp)
+  - SonarJava 5.9.2.16552 (java)
+  - LDAP 2.2.0.608 (ldap)
+  - Git 1.4.1.1128 (scmgit)
+  - SonarFlex 2.4.0.1222 (flex)
+  - SonarXML 1.5.1.1452 (xml)
+  - SonarPHP 2.15.0.4060 (php)
+  - SonarTS 1.8.0.3332 (typescript)
+  - Checkstyle 4.11 (checkstyle)
+Global properties:
+  - email.from=sonar-hm@pbh.gov.br
+  - email.fromName=SonarQube - HM
+  - email.smtp_host.secured=******
+  - sonar.core.id=1C82E686-AWgPhu3txomlK5p4o2_p
+  - sonar.core.startTime=2019-03-30T13:22:11+0000
+  - sonar.forceAuthentication=true
+  - sonar.lf.enableGravatar=true
+Settings for module: minio-backend
+  - sonar.exclusions=vendor/**
+  - sonar.host.url=https://sonarqube-hm.pbh.gov.br
+  - sonar.language=php
+  - sonar.login=******
+  - sonar.password=******
+  - sonar.php.coverage.reportPath=ci/codeCoverage/codeCoverage.xml
+  - sonar.php.tests.reportPath=ci/testResults.xml
+  - sonar.projectBaseDir=D:\projetos\php\_testes\minio
+  - sonar.projectKey=minio-backend
+  - sonar.projectName=minio-backend
+  - sonar.projectVersion=1.0.0
+  - sonar.scanner.app=ScannerCli
+  - sonar.scanner.appVersion=3.3.0.1492
+  - sonar.sourceEncoding=UTF-8
+  - sonar.sources=app
+  - sonar.verbose=true
+  - sonar.working.directory=D:\projetos\php\_testes\minio\.scannerwork

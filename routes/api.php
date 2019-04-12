@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/arquivos/{nome_arquivo}/{modo?}', 'ArquivoController@recuperaArquivo');
+Route::delete('/arquivos/{nome_arquivo}', 'ArquivoController@removeArquivo');
+Route::post('/arquivos', 'ArquivoController@gravaArquivo');

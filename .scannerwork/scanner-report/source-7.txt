@@ -1,0 +1,95 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Arquivo;
+use GuzzleHttp\Client;
+
+class ArquivoController extends Controller
+{
+    private static $API_MINIO_URL = '';
+    private static $API_MINIO_AUTH = '';
+    private static $FILE_FIELD_NAME = 'arquivo';
+
+    public function __construct() {
+        self::$API_MINIO_URL = env('API_MINIO_URL');
+        self::$API_MINIO_AUTH = env('MINIO_KEY').':'.env('MINIO_SECRET');
+
+    }
+
+    public function gravaArquivo(Request $request)
+    {
+        $request->validate([
+            self::$FILE_FIELD_NAME => 'required|file',
+        ]);
+        $file = $request->file(self::$FILE_FIELD_NAME);
+        $arq  = null;
+
+        try {
+            DB::beginTransaction();
+            //------------------ prepara objeto para salvar no banco
+            $client   = new Client();
+            $conteudo = \file_get_contents($file->path());
+            $auth     = self::$API_MINIO_AUTH;
+            $url      = self::$API_MINIO_URL.'/api/arquivos';
+            $result   = $client->request('POST',  $url, [
+                'headers'  => [ 'Authorization' => $auth ],
+                'multipart' => [ [ 'name'     => self::$FILE_FIELD_NAME,
+                                   'contents' => $conteudo,
+                                   'filename' => $file->getClientOriginalName() ] ]
+                ]);
+
+            $arq = Arquivo::salvaArquivoJson($result->getBody()->getContents());
+
+            //------------------ salva no banco
+            DB::commit();
+            return json_encode($arq);
+
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return json_encode($th);
+        }
+    }
+
+    /**
+     * $modo = "show" || "download" || "url"
+     */
+    public function recuperaArquivo($hash_arquivo=null, $modo="show") {
+        if(!$hash_arquivo) {
+            return view('upload');
+        }
+
+        try {
+            $arq              = Arquivo::getByHash($hash_arquivo);
+            $client           = new Client();
+            $url              = self::$API_MINIO_URL.'/api/getStorage';
+            $result           = $client->request('GET',  $url, [ 'query' => ['nome_arquivo' => $hash_arquivo], 'http_errors' => false ]);
+            $conteudo_arquivo = $result->getBody();
+            if($modo === "url") {
+                return $this->urlArquivo($hash_arquivo);
+            } else if($modo === "download") {
+                return response($conteudo_arquivo, 200, ['Content-Type' => $arq->mimetype, 'Content-Disposition' => "attachment; filename=$arq->nome"]);
+            } else {
+                return response($conteudo_arquivo, 200, [ 'Content-Type' => $arq->mimetype, 'Content-Disposition' => "filename=$arq->nome"]);
+            }
+
+        } catch (\Throwable $th) {
+            return json_encode($th);
+        }
+    }
+
+    private function urlArquivo($hash_arquivo)
+    {
+        try {
+            $client   = new Client();
+            $url_api  = self::$API_MINIO_URL.'/api/getUrlStorage';
+            $result   = $client->request('GET', $url_api, ['query' => ['nome_arquivo' => $hash_arquivo], 'http_errors' => false ]);
+            return $result->getBody();
+
+        } catch (\Throwable $th) {
+            return json_encode($th);
+        }
+    }
+}

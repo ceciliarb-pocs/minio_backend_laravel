@@ -9,124 +9,92 @@ use GuzzleHttp\Client;
 
 class ArquivoController extends Controller
 {
+    private static $API_MINIO_URL = '';
+    private static $API_MINIO_AUTH = '';
+    private static $FILE_FIELD_NAME = 'arquivo';
+    private static $guzzleClient;
+
+    public function __construct() {
+        self::$API_MINIO_URL  = env('API_MINIO_URL');
+        self::$API_MINIO_AUTH = env('MINIO_KEY').':'.env('MINIO_SECRET');
+        self::$guzzleClient   = new Client();
+    }
+
     public function gravaArquivo(Request $request)
     {
         $request->validate([
-            'arquivo' => 'required|file',
+            self::$FILE_FIELD_NAME => 'required|file',
         ]);
+        $file = $request->file(self::$FILE_FIELD_NAME);
+        $arq  = null;
 
         try {
             DB::beginTransaction();
             //------------------ prepara objeto para salvar no banco
-            $arq_req       = $request->file('arquivo');
-            $arq           = new Arquivo();
-            $arq->nome     = $arq_req->getClientOriginalName();
-            $arq->hash     = \hash('sha256', $arq->nome.\time());
-            $arq->extensao = $arq_req->getClientOriginalExtension();
-            $arq->mimetype = \mime_content_type($arq_req->getPathname());
-            $arq->save();
+            $conteudo = \file_get_contents($file->path());
+            $url      = self::$API_MINIO_URL;
+            $result   = self::$guzzleClient->request('POST',  $url, [
+                'headers'  => [ 'Authorization' => self::$API_MINIO_AUTH ],
+                'multipart' => [ [ 'name'       => self::$FILE_FIELD_NAME,
+                                   'contents'   => $conteudo,
+                                   'filename'   => $file->getClientOriginalName() ] ]
+                ]);
 
-            //------------------ envia objeto para API salvar no storage
-            $client           = new Client();
-            $conteudo_arquivo = base64_encode(file_get_contents($arq_req->path()));
-            $sobrescreve      = $request->sobrescreve || false;
-            $url              = env('API_MINIO_URL').'/api/uploadStorage';
-            $result           = $client->request('POST',  $url, [
-                'headers' => [
-                    'content-type' => 'application/x-www-form-urlencoded',
-                ],
-                'form_params' => [
-                    'nome_arquivo'   => $arq->hash,
-                    'corpo_arquivo'  => $conteudo_arquivo,
-                    'sobrescreve'    => $sobrescreve
-                ],
-                'http_errors' => false
-            ]);
+            $arq = Arquivo::salvaArquivoJson($result->getBody()->getContents());
 
             //------------------ salva no banco
             DB::commit();
-            return response($result->getStatusCode() == 200);
+            return json_encode($arq);
 
         } catch (\Throwable $th) {
-
             DB::rollback();
-            return json_encode('false');
+            throw new \Exception("[ERRO] Não foi possível processar o UPLOAD.".$th->getMessage(), 412);
         }
     }
 
-    private function getArquivo($hash_arquivo, $download=false) {
+    /**
+     * $modo = "show" || "download" || "url"
+     */
+    public function recuperaArquivo($nome_arquivo, $modo="show") {
         try {
-            $hash             = $hash_arquivo;
-            $arq              =  Arquivo::where('hash', $hash)->first();
-            if(!$arq)  return "[ERRO] Arquivo não encontrado.";
-            $hash             =  $arq->hash;
-
-            $client           = new Client();
-            $url              = env('API_MINIO_URL').'/api/getStorage';
-            $result           = $client->request('GET',  $url, [
-                'query'       => ['nome_arquivo' => $hash],
-                'http_errors' => false
-            ]);
-            $conteudo_arquivo = $result->getBody();
-            if(base64_encode(base64_decode($conteudo_arquivo)) === $conteudo_arquivo) {
-                $conteudo_arquivo = base64_decode($conteudo_arquivo);
-            } else {
-                $conteudo_arquivo = $conteudo_arquivo;
+            $arq    = Arquivo::getByNome($nome_arquivo);
+            if($arq===null) {
+                throw new Exception("[ERRO] Arquivo não encontrado.", 412);
             }
 
-            if($download) {
-                return response($conteudo_arquivo, 200, ['Content-Type' => $arq->mimetype, 'Content-Disposition' => "attachment; filename=$arq->nome"]);
+            $url    = self::$API_MINIO_URL;
+            $result = self::$guzzleClient->request('GET',  $url, [
+                'headers'  => [ 'Authorization' => self::$API_MINIO_AUTH ],
+                'query' => ['nome_arquivo' => $nome_arquivo, 'modo' => $modo]
+            ]);
+            $conteudo_arquivo = $result->getBody()->getContents();
+            if($modo === "url") {
+                return json_encode([ 'url' => $conteudo_arquivo ]);
             } else {
-                return response($conteudo_arquivo, 200, [ 'Content-Type' => $arq->mimetype, 'Content-Disposition' => "filename=$arq->nome"]);
+                $result->getBody()->detach();
+                return json_encode([ 'Content' => base64_encode($conteudo_arquivo), 'ContentType' => $arq->mimetype, 'FileName' => $nome_arquivo]);
             }
 
         } catch (\Throwable $th) {
-            return json_encode('false');
+            throw new \Exception("[ERRO] Não foi possível processar o GET.".$th->getMessage(), 412);
         }
     }
 
-    public function recuperaArquivo(Request $request)
-    {
-        $request->validate([
-            'hash_arquivo' => 'required',
-        ]);
-
-        return $this->getArquivo($request->hash_arquivo);
-    }
-
-    public function baixaArquivo(Request $request)
-    {
-        $request->validate([
-            'hash_arquivo' => 'required',
-            ]);
-
-        return $this->getArquivo($request->hash_arquivo, true);
-
-    }
-
-    public function urlArquivo(Request $request)
-    {
-        $request->validate([
-            'hash_arquivo' => 'required',
-        ]);
-
+    public function removeArquivo($nome_arquivo) {
         try {
-            $hash             = $request->hash_arquivo;
-            $arq              =  Arquivo::where('hash', $hash)->first();
-            if(!$arq)  return "[ERRO] Arquivo não encontrado.";
-            $hash             =  $arq->hash;
+            $arq    = Arquivo::getByNome($nome_arquivo);
+            if($arq===null) {
+                throw new \Exception("[ERRO] Arquivo não encontrado.", 412);
+            }
 
-            $client           = new Client();
-            $url              = env('API_MINIO_URL').'/api/getUrlStorage';
-            $result           = $client->request('GET',  $url, [
-                'query'       => ['nome_arquivo' => $hash],
-                'http_errors' => false
-            ]);
-            $url = $result->getBody();
-            return $url;
+            $url    = self::$API_MINIO_URL;
+            $result = self::$guzzleClient->delete($url.'/'.$nome_arquivo, [ 'headers' => [ 'Authorization' => self::$API_MINIO_AUTH ] ]);
+            $resposta = $result->getBody()->getContents();
+            return json_encode([ 'msg' => $resposta ]);
 
         } catch (\Throwable $th) {
-            return json_encode('false');
+            throw new \Exception("[ERRO] Não foi possível processar o DELETE.".$th->getMessage(), 412);
         }
     }
+
 }

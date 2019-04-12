@@ -1,0 +1,1 @@
+*app/Providers/BroadcastServiceProvider.php 2phpXh

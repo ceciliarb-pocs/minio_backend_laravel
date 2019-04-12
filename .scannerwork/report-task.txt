@@ -1,0 +1,6 @@
+projectKey=minio-backend
+serverUrl=https://sonarqube-hm.pbh.gov.br
+serverVersion=6.7.6.38781
+dashboardUrl=https://sonarqube-hm.pbh.gov.br/dashboard/index/minio-backend
+ceTaskId=AWoSFs-iWrTLvHU-qn8t
+ceTaskUrl=https://sonarqube-hm.pbh.gov.br/api/ce/task?id=AWoSFs-iWrTLvHU-qn8t

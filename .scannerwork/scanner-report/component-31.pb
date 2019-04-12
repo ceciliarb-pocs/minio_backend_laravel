@@ -1,0 +1,1 @@
+&app/Providers/EventServiceProvider.php 2phpX#h

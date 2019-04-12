@@ -1,0 +1,1 @@
+'app/Http/Middleware/VerifyCsrfToken.php 2phpXh

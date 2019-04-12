@@ -1,0 +1,1 @@
+*app/Http/Controllers/ArquivoController.php 2phpX`h

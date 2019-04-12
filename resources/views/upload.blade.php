@@ -69,7 +69,7 @@
                 <div class="title m-b-md">
                     Upload
                 </div>
-                <form action="{{ url('upload') }}" method="post" enctype="multipart/form-data" name="form">
+                <form action="" method="post" enctype="multipart/form-data" name="form">
                     {{ csrf_field() }}
                     <input type="file" name="arquivo" id="arquivo">
                     <button>Enviar</button>
